@@ -11,9 +11,7 @@ class webhook:
         self.webhookToken, self.webhookID = self.jsonResponse["token"], self.jsonResponse["id"]
 
     def delete(self):
-        URI = f"{baseURL}{self.webhookID}/{self.webhookToken}"
-        response = requests.delete(URI)
-        return response
+        return requests.delete(f"{baseURL}{self.webhookID}/{self.webhookToken}")
     
     def sendMessage(self, message):
         return requests.post(self.webhookURL, json={"content":message})
